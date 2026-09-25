@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上野⇔新潟 最安ナビ</title>
+  <meta name="description" content="上野と新潟の間をいちばん安く移動する方法と、早割で取れる列車の探し方をまとめたページ。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>上野⇔新潟 最安ナビ</h1>
+    <p>日付を選ぶだけで、その日にいちばん安い行き方がわかります</p>
+  </header>
+
+  <main>
+    <form id="search" onsubmit="return false">
+      <div class="direction" role="radiogroup" aria-label="方向">
+        <label><input type="radio" name="direction" value="down" checked><span>上野 → 新潟</span></label>
+        <label><input type="radio" name="direction" value="up"><span>新潟 → 上野</span></label>
+      </div>
+      <label>乗る日<input type="date" id="date"></label>
+      <details id="settings">
+        <summary>わたしの設定（株主優待・大人の休日倶楽部）</summary>
+        <label class="check"><input type="checkbox" id="has-coupon">JR東日本の株主優待券を持っている</label>
+        <label>優待券を買う場合の値段（円）<input type="number" id="coupon-price" min="0" step="100"></label>
+        <label>大人の休日倶楽部
+          <select id="otona">
+            <option value="none">入っていない</option>
+            <option value="middle">ミドル会員（5%引き）</option>
+            <option value="zipangu">ジパング会員（30%引き）</option>
+          </select>
+        </label>
+      </details>
+    </form>
+
+    <section id="summary" aria-live="polite"></section>
+    <section id="alerts"></section>
+    <ol id="results"></ol>
+
+    <section class="guide">
+      <h2>早割で取れる列車の見つけ方</h2>
+      <ol>
+        <li>発売開始日（乗る日の1ヶ月前）の <strong>10:00</strong> に「えきねっと」を開く</li>
+        <li>出発「上野」、到着「新潟」、日付を入れて検索する</li>
+        <li>「とき」の一覧で <strong>「トクだ値スペシャル28」</strong> と表示された列車が半額の対象。表示がない列車は対象外か売り切れ</li>
+        <li>対象の列車・席数は日によって変わり、事前には公開されないため、えきねっとの検索結果が唯一の確認方法です</li>
+      </ol>
+      <p>乗りたい時間帯の「とき」は時刻表で先に確認しておくとスムーズです：
+        <a id="timetable-link" target="_blank" rel="noopener">上越新幹線の時刻表</a></p>
+    </section>
+
+    <section class="guide">
+      <h2>もっと安くするには</h2>
+      <ul>
+        <li><strong>株主優待券</strong>：金券ショップで1枚3,200円前後。指定席が4割引になり、どの列車・どの日でも使えます（有効期限 2027年6月30日）。4割引後の運賃に券代を足しても、eチケットより数百円安くなる程度です。</li>
+        <li><strong>トクだ値スペシャル28</strong>：半額でいちばん得ですが、平日限定で、JR東日本が期間を発表したときだけ発売されます（2026年は 10/14〜10/27 と 12/7〜12/17）。「トクだ値1」「トクだ値14」は2026年9月乗車分で終了しました。</li>
+        <li><strong>JRE POINT特典</strong>：ポイントで新幹線に乗れます。年3回の35%OFFキャンペーン中は交換ポイントが少なくて済みます（次回は 2027/1/18〜1/31 乗車分、予約開始 2026/12/18）。</li>
+        <li><strong>大人の休日倶楽部</strong>：50歳以上ならミドル（5%引き）、女性60歳以上ならジパング（30%引き）。ジパングなら年会費を払っても、年に数回乗れば元が取れます。</li>
+        <li><strong>高速バス</strong>：いちばん安い方法（2,500円〜）。約5時間かかり、上野から直行便はないので新宿か池袋から乗ります。</li>
+        <li><strong>泊まりがけなら</strong>：JR東日本の「新幹線＋宿」セット（びゅうダイナミックレールパック）のほうが、別々に取るより安くなることがあります。</li>
+        <li>往復割引は2026年3月で終わっているため、往復でも片道×2で計算しています。</li>
+      </ul>
+    </section>
+
+    <aside class="notice">
+      <p>金額は片道・大人1名の<strong>目安</strong>です（<span id="as-of"></span>）。「約」の付いた金額は推定値です。
+        運賃改定やキャンペーン終了で変わることがあるので、予約時にえきねっとなどで最終確認してください。</p>
+    </aside>
+  </main>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
