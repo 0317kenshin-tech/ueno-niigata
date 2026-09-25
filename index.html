@@ -19,7 +19,10 @@
         <label><input type="radio" name="direction" value="down" checked><span>上野 → 新潟</span></label>
         <label><input type="radio" name="direction" value="up"><span>新潟 → 上野</span></label>
       </div>
-      <label>乗る日<input type="date" id="date"></label>
+      <div class="row">
+        <label>乗る日<input type="date" id="date"></label>
+        <label>出発時刻<select id="time"></select></label>
+      </div>
       <details id="settings">
         <summary>わたしの設定（株主優待・大人の休日倶楽部）</summary>
         <label class="check"><input type="checkbox" id="has-coupon">JR東日本の株主優待券を持っている</label>
@@ -46,8 +49,15 @@
         <li>「とき」の一覧で <strong>「トクだ値スペシャル28」</strong> と表示された列車が半額の対象。表示がない列車は対象外か売り切れ</li>
         <li>対象の列車・席数は日によって変わり、事前には公開されないため、えきねっとの検索結果が唯一の確認方法です</li>
       </ol>
-      <p>乗りたい時間帯の「とき」は時刻表で先に確認しておくとスムーズです：
-        <a id="timetable-link" target="_blank" rel="noopener">上越新幹線の時刻表</a></p>
+      <p>各カードの「〇〇ごろの『とき』を選んで予約」を押すと、日付・時刻・区間が入った乗換案内が開きます。
+        新幹線ルートの「えきねっとで予約」を押すと、その列車が選ばれた状態でえきねっとに進みます（ログインはえきねっとの画面で）。</p>
+      <p>時刻表だけ見たいとき：<a id="timetable-link" target="_blank" rel="noopener">上越新幹線の時刻表</a></p>
+    </section>
+
+    <section class="guide">
+      <h2>株主優待券を買えるお店</h2>
+      <p class="sub">安い順。「番号をメールで即納」のお店なら、届いた番号をえきねっとに入れるだけで使えます。</p>
+      <ul id="coupon-shops" class="shops"></ul>
     </section>
 
     <section class="guide">

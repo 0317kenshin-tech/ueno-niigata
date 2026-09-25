@@ -1,5 +1,5 @@
-import { DATA_AS_OF, LINKS, SHAREHOLDER } from "./data.js";
-import { SEASONS, buildOptions, getSeason, jrePointCampaign, rankOptions, reminderIcs } from "./engine.js";
+import { COUPON_SHOPS, DATA_AS_OF, LINKS, SHAREHOLDER } from "./data.js";
+import { SEASONS, buildOptions, getSeason, jrePointCampaign, rankOptions, reminderIcs, trainSearchUrl } from "./engine.js";
 
 const $ = (id) => document.getElementById(id);
 const yen = (n) => `${Math.round(n).toLocaleString("ja-JP")}円`;
@@ -57,7 +57,41 @@ function downloadReminder(title, date, description) {
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
-function renderCard(o, isBest) {
+let couponShops = COUPON_SHOPS;
+
+// Actions が取得した最新価格（data/prices.json）があれば反映する
+async function loadCouponPrices() {
+  try {
+    const res = await fetch("data/prices.json", { cache: "no-cache" });
+    if (!res.ok) return;
+    const { shops } = await res.json();
+    couponShops = COUPON_SHOPS.map((s) => ({ ...s, ...(shops.find((p) => p.id === s.id && p.price) ?? {}) }));
+  } catch {
+    // 価格ファイルがなければ静的データのまま
+  }
+}
+
+function cheapestCouponShop() {
+  const priced = couponShops.filter((s) => s.price).sort((a, b) => a.price - b.price);
+  return priced[0] ?? couponShops[0];
+}
+
+function renderCard(o, isBest, ctx) {
+  const links = [];
+  if (o.mode === "shinkansen" && o.available) {
+    links.push(`<a class="primary" href="${trainSearchUrl(ctx)}" target="_blank" rel="noopener">${ctx.time}ごろの「とき」を選んで予約</a>`);
+    links.push(`<a href="${LINKS.ekinetReserve}" target="_blank" rel="noopener">えきねっとの予約画面</a>`);
+  } else {
+    links.push(`<a href="${o.url}" target="_blank" rel="noopener">予約・確認する</a>`);
+  }
+  if (o.id.startsWith("shareholder") && !$("has-coupon").checked) {
+    const shop = cheapestCouponShop();
+    links.push(`<a href="${shop.url}" target="_blank" rel="noopener">優待券を買う：${escapeHtml(shop.name)}${shop.price ? ` ${yen(shop.price)}` : ""}</a>`);
+  }
+  if (o.limited) links.push(`<a href="${o.url}" target="_blank" rel="noopener">スペシャル28の案内</a>`);
+  if (o.bookFrom) {
+    links.push(`<button type="button" class="remind" data-date="${o.bookFrom}" data-name="${escapeHtml(o.name)}">発売日をカレンダーに登録</button>`);
+  }
   return `
     <li class="card ${o.available ? "" : "disabled"} ${isBest ? "best" : ""}">
       <div class="card-head">
@@ -72,10 +106,7 @@ function renderCard(o, isBest) {
         <div>所要 約${duration(o.minutes)}</div>
         <div class="sub">${escapeHtml(o.how)}</div>
       </div>
-      <div class="links">
-        <a href="${o.url}" target="_blank" rel="noopener">予約・確認する</a>
-        ${o.bookFrom ? `<button type="button" class="remind" data-date="${o.bookFrom}" data-name="${escapeHtml(o.name)}">発売日をカレンダーに登録</button>` : ""}
-      </div>
+      <div class="links">${links.join("")}</div>
     </li>`;
 }
 
@@ -84,8 +115,9 @@ function render() {
   if (!date) return;
   const direction = document.querySelector('input[name="direction"]:checked').value;
   const today = localDateStr(new Date());
+  const time = $("time").value;
   const profile = currentProfile();
-  saveSettings(profile);
+  saveSettings({ ...profile, time });
 
   const ranked = rankOptions(buildOptions({ direction, date, today, profile }));
   const cheapest = ranked.find((o) => o.available);
@@ -111,14 +143,28 @@ function render() {
     : "";
 
   const shinkansenBestId = cheapestShinkansen?.id;
-  $("results").innerHTML = ranked.map((o) => renderCard(o, o.id === shinkansenBestId)).join("");
+  const ctx = { direction, date, time };
+  $("results").innerHTML = ranked.map((o) => renderCard(o, o.id === shinkansenBestId, ctx)).join("");
+  renderCouponShops();
   $("timetable-link").href = direction === "down" ? LINKS.timetable : LINKS.timetableUp;
 }
 
-function init() {
+function renderCouponShops() {
+  const sorted = [...couponShops].sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
+  $("coupon-shops").innerHTML = sorted
+    .map((s) => `<li><a href="${s.url}" target="_blank" rel="noopener">${escapeHtml(s.name)}</a>
+      ${s.price ? `<strong>${yen(s.price)}</strong>` : "<span class=\"sub\">価格はサイトで確認</span>"}
+      <span class="sub">${escapeHtml(s.delivery)}</span></li>`)
+    .join("");
+}
+
+async function init() {
   const saved = loadSettings();
   $("has-coupon").checked = Boolean(saved.hasCoupon);
   $("coupon-price").value = saved.couponPrice ?? SHAREHOLDER.couponMarketPrice;
+  $("time").innerHTML = Array.from({ length: 17 }, (_, i) => `${String(i + 6).padStart(2, "0")}:00`)
+    .map((t) => `<option${t === (saved.time ?? "08:00") ? " selected" : ""}>${t}</option>`)
+    .join("");
   $("otona").value = saved.otona ?? "none";
 
   const d = new Date();
@@ -138,6 +184,8 @@ function init() {
       `${$("date").value} 乗車分の予約開始。${LINKS.ekinet}`,
     );
   });
+  render();
+  await loadCouponPrices();
   render();
 }
 

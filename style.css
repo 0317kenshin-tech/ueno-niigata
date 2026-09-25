@@ -148,3 +148,14 @@ summary { cursor: pointer; color: var(--train); font-size: 0.95rem; }
 .guide a { color: var(--train); }
 
 .notice { font-size: 0.8rem; color: var(--muted); margin: 24px 0 40px; }
+
+.links a.primary {
+  background: var(--train);
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+}
+.shops { list-style: none; padding: 0; display: grid; gap: 8px; }
+.shops li { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }

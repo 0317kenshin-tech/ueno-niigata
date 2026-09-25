@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { buildOptions, getSeason, oneMonthBefore, rankOptions, special28Status } from "../src/engine.js";
+import { buildOptions, getSeason, oneMonthBefore, rankOptions, special28Status, trainSearchUrl } from "../src/engine.js";
 
 const TODAY = "2026-09-25";
 const byId = (opts, id) => opts.find((o) => o.id === id);
@@ -66,4 +66,12 @@ test("ranking: unavailable last, then cheapest first", () => {
 
 test("past dates are unavailable", () => {
   assert.ok(buildOptions({ date: "2026-09-20", today: TODAY }).every((o) => !o.available));
+});
+
+test("train search URL carries direction, date and time", () => {
+  const url = new URL(trainSearchUrl({ direction: "up", date: "2026-12-08", time: "17:30" }));
+  const q = url.searchParams;
+  assert.equal(q.get("from"), "新潟");
+  assert.equal(q.get("to"), "上野");
+  assert.deepEqual([q.get("y"), q.get("m"), q.get("d"), q.get("hh"), q.get("m1"), q.get("m2")], ["2026", "12", "08", "17", "3", "0"]);
 });

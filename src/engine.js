@@ -70,6 +70,22 @@ export function getSeason(dateStr) {
 
 const inRange = (date, { start, end }) => date >= start && date <= end;
 
+/**
+ * Yahoo!乗換案内の検索結果 URL（日付・時刻・区間を入力済み）。
+ * 結果の新幹線ルートにある「えきねっとで予約」から、列車と日付が入った状態でえきねっとへ進める。
+ */
+export function trainSearchUrl({ direction = "down", date, time = "08:00" }) {
+  const [y, m, d] = date.split("-");
+  const [hh, mm] = time.split(":");
+  const [from, to] = direction === "down" ? ["上野", "新潟"] : ["新潟", "上野"];
+  const q = new URLSearchParams({
+    from, to, y, m, d, hh, m1: mm[0], m2: mm[1],
+    type: "1", ticket: "ic", expkind: "1", userpass: "1", ws: "3", s: "0",
+    al: "1", shin: "1", ex: "1", hb: "1", lb: "1", sr: "1",
+  });
+  return `https://transit.yahoo.co.jp/search/result?${q}`;
+}
+
 /** 通常の指定席の発売開始（1ヶ月前の10:00） */
 export function reservationOpens(date) {
   return oneMonthBefore(date);

@@ -52,6 +52,7 @@ export const BUS = {
 
 export const LINKS = {
   ekinet: "https://www.eki-net.com/",
+  ekinetReserve: "https://www.eki-net.com/Personal/reserve/wb/RouteSearchConditionInput/Index",
   special28: "https://www.eki-net.com/top/tokudane/",
   shareholderEticket: "https://www.eki-net.com/top/e-ticket/",
   jrePoint: "https://www.eki-net.com/top/product/shinkansen/e-tokuten.html",
@@ -60,5 +61,14 @@ export const LINKS = {
   timetableUp: "https://www.navitime.co.jp/diagram/depArrTimeList?departure=00004192&arrival=00004067&line=00000148&updown=0",
   busDown: "https://www.bushikaku.net/search/tokyo_niigata/",
   busUp: "https://www.bushikaku.net/search/niigata_tokyo/",
-  couponShop: "https://www.tickety.jp/sell/train/jrhigashinihon-kabu/single.php",
 };
+
+// 株主優待券のネット販売店。price は data/prices.json（取得できた場合）で上書きされる。
+// 「番号をメールで即納」の店なら、届いた番号をえきねっとに入れるだけで使える（郵送待ちなし）。
+export const COUPON_SHOPS = [
+  { id: "kabuyu", name: "株優エクスプレス", url: "https://www.life1.co.jp/code/jre-buy/", delivery: "番号をメールで即納", instant: true },
+  { id: "jrsale", name: "JR株主優待.com", url: "https://jr-sale.com/", delivery: "番号をメールで即納", instant: true },
+  { id: "tickety", name: "チケッティ", url: "https://www.tickety.jp/sell/train/jrhigashinihon-kabu/single.php", delivery: "郵送", price: 3200 },
+  { id: "access", name: "アクセスチケット", url: "https://www.access-ticket.com/products/detail/5432", delivery: "郵送" },
+  { id: "ranger", name: "チケットレンジャー", url: "https://www.ticketlife.jp/kaitai/2302/", delivery: "郵送" },
+];
