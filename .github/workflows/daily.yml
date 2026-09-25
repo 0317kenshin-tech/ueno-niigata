@@ -40,7 +40,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 通知テスト
         if: ${{ inputs.test_notify }}
-        run: node -e 'import("./scripts/lib.mjs").then((m) => m.notify({ title: "通知テスト", message: "上野⇔新潟 最安ナビからの通知が届いています。", click: "https://0317kenshin-tech.github.io/ueno-niigata/" }))'
+        run: |
+          node -e 'import("./scripts/lib.mjs").then((m) => m.notify({ title: "通知テスト", message: "上野⇔新潟 最安ナビからの通知が届いています。", click: "https://0317kenshin-tech.github.io/ueno-niigata/" }))'
         env:
           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
