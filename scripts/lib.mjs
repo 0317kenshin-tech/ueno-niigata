@@ -42,14 +42,15 @@ export function todayJst() {
 /** 奥さんのスマホ（ntfy）と GitHub Issue に通知する */
 export async function notify({ title, message, click }) {
   console.log(`NOTIFY: ${title}\n${message}\n${click ?? ""}`);
-  const topic = process.env.NTFY_TOPIC;
+  const topic = process.env.NTFY_TOPIC?.trim();
   if (topic) {
     const res = await fetch("https://ntfy.sh/", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ topic, title, message, click, tags: ["train"], priority: 4 }),
     });
-    console.log(`ntfy: ${res.status}`);
+    console.log(`ntfy: ${res.status} ${res.ok ? "" : await res.text()}`);
+    if (!/^[\w-]{1,64}$/.test(topic)) console.log("ntfy: トピック名に使えない文字が含まれています（英数字・-・_ のみ）");
   }
   const { GITHUB_TOKEN, GITHUB_REPOSITORY } = process.env;
   if (GITHUB_TOKEN && GITHUB_REPOSITORY) {
