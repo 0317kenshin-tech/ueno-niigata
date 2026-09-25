@@ -14,15 +14,19 @@ const SHOPS = [
   { id: "ranger", name: "チケットレンジャー", url: "https://www.ticketlife.jp/kaitai/2302/", delivery: "郵送" },
 ];
 
-// 有効期限の表記の近く（前後600文字）にある 1,500〜6,000円 の金額のうち最小を1枚価格とみなす
+// 「JR東日本」の商品名の直後にある有効期限の、すぐ後ろに出てくる金額を1枚の価格とみなす。
+// 同じページに JR東海・西日本・九州 などの券が並ぶので、間に別の商品名が挟まったら採用しない。
+const OTHER_ITEM = /JR東海|JR西日本|JR九州|JR北海道|JR四国|サービス券|ANA|JAL/;
+
 export function extractPrice(text) {
   const prices = [];
   for (const m of text.matchAll(new RegExp(VALIDITY, "g"))) {
-    const window = text.slice(Math.max(0, m.index - 600), m.index + 600);
-    for (const p of window.matchAll(/(?:¥\s*)?([1-6],?\d{3})\s*(?:円|\(税込\)|（税込）)|¥\s*([1-6],?\d{3})/g)) {
-      const n = Number((p[1] ?? p[2]).replace(",", ""));
-      if (n >= 1500 && n <= 6000) prices.push(n);
-    }
+    if (!text.slice(Math.max(0, m.index - 80), m.index).includes("JR東日本")) continue;
+    const after = text.slice(m.index, m.index + 250);
+    const p = /(?:¥\s*([1-6],?\d{3}))|(?:([1-6],?\d{3})\s*円)/.exec(after);
+    if (!p || OTHER_ITEM.test(after.slice(0, p.index))) continue;
+    const n = Number((p[1] ?? p[2]).replace(",", ""));
+    if (n >= 1500 && n <= 6000) prices.push(n);
   }
   return prices.length ? Math.min(...prices) : null;
 }
