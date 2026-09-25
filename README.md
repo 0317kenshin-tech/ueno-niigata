@@ -40,3 +40,10 @@ npm test
 - トクだ値スペシャル28: 2026/10/14〜10/27、12/7〜12/17 の平日。1ヶ月前10:00〜28日前23:50に発売
 - 株主優待券（2026/7/1〜2027/6/30 有効）: 販売価格 1枚 約3,200円。指定席は 6,580円になる
 - 往復割引乗車券は2026年3月13日で発売終了
+
+## 毎日の自動チェック（GitHub Actions）
+`.github/workflows/daily.yml` が毎朝 9:30（日本時間）に実行する。手動実行は Actions タブ → daily-check → Run workflow。
+- `scripts/watch-special28.mjs`: トクだ値スペシャル28 の新しいニュース・えきねっとの案内の変化を検知して通知。登録済み期間の発売開始日の朝にも通知
+- `scripts/fetch-prices.mjs`: 株主優待券の各店の価格を取得して `data/prices.json` に保存（サイトが読み込んで最安店を表示）
+
+通知先: リポジトリの Secret `NTFY_TOPIC` に ntfy のトピック名を入れると、ntfy アプリに届く。GitHub の Issue にも作成される。

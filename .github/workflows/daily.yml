@@ -1,0 +1,52 @@
+name: daily-check
+
+on:
+  schedule:
+    - cron: "30 0 * * *" # 毎日 9:30（日本時間）
+  workflow_dispatch:
+    inputs:
+      debug:
+        description: "ページ本文をログに出す"
+        type: boolean
+        default: false
+      test_notify:
+        description: "通知のテストを送る"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency: daily-check
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --test
+      - name: 株主優待券の最安値を取得
+        run: node scripts/fetch-prices.mjs
+        env:
+          DEBUG: ${{ inputs.debug && '1' || '' }}
+      - name: トクだ値スペシャル28 を監視
+        run: node scripts/watch-special28.mjs
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 通知テスト
+        if: ${{ inputs.test_notify }}
+        run: node -e 'import("./scripts/lib.mjs").then((m) => m.notify({ title: "通知テスト", message: "上野⇔新潟 最安ナビからの通知が届いています。", click: "https://0317kenshin-tech.github.io/ueno-niigata/" }))'
+        env:
+          NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 結果を保存
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet || (git commit -m "毎日のチェック結果を更新" && git push)
