@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-25T13:57:01.600Z",
+  "updatedAt": "2026-09-25T13:59:15.763Z",
   "shops": [
     {
       "id": "access",
@@ -7,7 +7,7 @@
       "url": "https://www.access-ticket.com/products/detail/5432",
       "delivery": "郵送",
       "price": 3200,
-      "checkedAt": "2026-09-25T13:56:49.062Z",
+      "checkedAt": "2026-09-25T13:59:03.659Z",
       "stale": false
     },
     {
@@ -16,7 +16,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 3350,
-      "checkedAt": "2026-09-25T13:56:47.128Z",
+      "checkedAt": "2026-09-25T13:59:01.652Z",
       "stale": false
     }
   ]
