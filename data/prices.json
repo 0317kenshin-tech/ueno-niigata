@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-02T06:00:32.011Z",
+  "updatedAt": "2026-10-03T05:36:21.888Z",
   "shops": [
     {
       "id": "kabuyu",
@@ -7,7 +7,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 3500,
-      "checkedAt": "2026-10-02T06:00:18.048Z",
+      "checkedAt": "2026-10-03T05:36:05.978Z",
       "stale": false
     },
     {
@@ -16,7 +16,7 @@
       "url": "https://www.access-ticket.com/products/detail/5432",
       "delivery": "郵送",
       "price": 3500,
-      "checkedAt": "2026-10-02T06:00:19.928Z",
+      "checkedAt": "2026-10-03T05:36:07.592Z",
       "stale": false
     },
     {
@@ -34,7 +34,7 @@
       "url": "https://www.ticketlife.jp/kaitai/2302/",
       "delivery": "郵送",
       "price": 3500,
-      "checkedAt": "2026-10-02T06:00:32.010Z",
+      "checkedAt": "2026-10-03T05:36:21.888Z",
       "stale": false
     }
   ]
