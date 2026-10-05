@@ -1,22 +1,13 @@
 {
-  "updatedAt": "2026-10-04T06:11:48.493Z",
+  "updatedAt": "2026-10-05T06:04:36.057Z",
   "shops": [
-    {
-      "id": "kabuyu",
-      "name": "株優エクスプレス",
-      "url": "https://www.life1.co.jp/code/jre-buy/",
-      "delivery": "番号をメールで即納",
-      "price": 3500,
-      "checkedAt": "2026-10-04T06:11:42.695Z",
-      "stale": false
-    },
     {
       "id": "access",
       "name": "アクセスチケット",
       "url": "https://www.access-ticket.com/products/detail/5432",
       "delivery": "郵送",
       "price": 3500,
-      "checkedAt": "2026-10-04T06:11:45.650Z",
+      "checkedAt": "2026-10-05T06:04:32.415Z",
       "stale": false
     },
     {
@@ -25,7 +16,7 @@
       "url": "https://jr-sale.com/",
       "delivery": "番号をメールで即納",
       "price": 3500,
-      "checkedAt": "2026-10-04T06:11:46.718Z",
+      "checkedAt": "2026-10-05T06:04:33.415Z",
       "stale": false
     },
     {
@@ -34,7 +25,16 @@
       "url": "https://www.ticketlife.jp/kaitai/2302/",
       "delivery": "郵送",
       "price": 3500,
-      "checkedAt": "2026-10-04T06:11:48.493Z",
+      "checkedAt": "2026-10-05T06:04:36.057Z",
+      "stale": false
+    },
+    {
+      "id": "kabuyu",
+      "name": "株優エクスプレス",
+      "url": "https://www.life1.co.jp/code/jre-buy/",
+      "delivery": "番号をメールで即納",
+      "price": 3600,
+      "checkedAt": "2026-10-05T06:04:30.429Z",
       "stale": false
     }
   ]
