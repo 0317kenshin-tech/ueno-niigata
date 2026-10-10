@@ -1,22 +1,13 @@
 {
-  "updatedAt": "2026-10-09T06:31:02.532Z",
+  "updatedAt": "2026-10-10T06:13:11.193Z",
   "shops": [
-    {
-      "id": "jrsale",
-      "name": "JR株主優待.com",
-      "url": "https://jr-sale.com/",
-      "delivery": "番号をメールで即納",
-      "price": 3500,
-      "checkedAt": "2026-10-07T06:18:48.618Z",
-      "stale": true
-    },
     {
       "id": "ranger",
       "name": "チケットレンジャー",
       "url": "https://www.ticketlife.jp/kaitai/2302/",
       "delivery": "郵送",
       "price": 3500,
-      "checkedAt": "2026-10-09T06:31:02.532Z",
+      "checkedAt": "2026-10-10T06:13:11.193Z",
       "stale": false
     },
     {
@@ -25,7 +16,16 @@
       "url": "https://www.access-ticket.com/products/detail/5432",
       "delivery": "郵送",
       "price": 3600,
-      "checkedAt": "2026-10-09T06:30:49.963Z",
+      "checkedAt": "2026-10-10T06:13:06.738Z",
+      "stale": false
+    },
+    {
+      "id": "jrsale",
+      "name": "JR株主優待.com",
+      "url": "https://jr-sale.com/",
+      "delivery": "番号をメールで即納",
+      "price": 3600,
+      "checkedAt": "2026-10-10T06:13:07.917Z",
       "stale": false
     },
     {
@@ -34,7 +34,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 3700,
-      "checkedAt": "2026-10-09T06:30:47.990Z",
+      "checkedAt": "2026-10-10T06:13:04.869Z",
       "stale": false
     }
   ]
