@@ -1,15 +1,6 @@
 {
-  "updatedAt": "2026-10-23T05:12:04.114Z",
+  "updatedAt": "2026-10-24T04:54:44.821Z",
   "shops": [
-    {
-      "id": "access",
-      "name": "アクセスチケット",
-      "url": "https://www.access-ticket.com/products/detail/5432",
-      "delivery": "郵送",
-      "price": 3700,
-      "checkedAt": "2026-10-23T05:12:00.724Z",
-      "stale": false
-    },
     {
       "id": "jrsale",
       "name": "JR株主優待.com",
@@ -17,7 +8,7 @@
       "delivery": "番号をメールで即納",
       "price": 3800,
       "checkedAt": "2026-10-23T05:12:02.172Z",
-      "stale": false
+      "stale": true
     },
     {
       "id": "kabuyu",
@@ -26,6 +17,15 @@
       "delivery": "番号をメールで即納",
       "price": 3850,
       "checkedAt": "2026-10-23T05:11:58.095Z",
+      "stale": true
+    },
+    {
+      "id": "access",
+      "name": "アクセスチケット",
+      "url": "https://www.access-ticket.com/products/detail/5432",
+      "delivery": "郵送",
+      "price": 3900,
+      "checkedAt": "2026-10-24T04:54:31.394Z",
       "stale": false
     },
     {
@@ -34,7 +34,7 @@
       "url": "https://www.ticketlife.jp/kaitai/2302/",
       "delivery": "郵送",
       "price": 3900,
-      "checkedAt": "2026-10-23T05:12:04.114Z",
+      "checkedAt": "2026-10-24T04:54:44.821Z",
       "stale": false
     }
   ]
