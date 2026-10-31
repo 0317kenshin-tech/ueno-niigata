@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-30T06:15:38.704Z",
+  "updatedAt": "2026-10-31T06:07:50.922Z",
   "shops": [
     {
       "id": "jrsale",
@@ -7,8 +7,8 @@
       "url": "https://jr-sale.com/",
       "delivery": "番号をメールで即納",
       "price": 3800,
-      "checkedAt": "2026-10-28T06:03:27.344Z",
-      "stale": true
+      "checkedAt": "2026-10-31T06:07:47.381Z",
+      "stale": false
     },
     {
       "id": "access",
@@ -16,7 +16,7 @@
       "url": "https://www.access-ticket.com/products/detail/5432",
       "delivery": "郵送",
       "price": 3900,
-      "checkedAt": "2026-10-30T06:15:26.307Z",
+      "checkedAt": "2026-10-31T06:07:46.397Z",
       "stale": false
     },
     {
@@ -25,7 +25,7 @@
       "url": "https://www.ticketlife.jp/kaitai/2302/",
       "delivery": "郵送",
       "price": 3900,
-      "checkedAt": "2026-10-30T06:15:38.704Z",
+      "checkedAt": "2026-10-31T06:07:50.922Z",
       "stale": false
     },
     {
@@ -34,7 +34,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 4000,
-      "checkedAt": "2026-10-30T06:15:24.338Z",
+      "checkedAt": "2026-10-31T06:07:44.817Z",
       "stale": false
     }
   ]
