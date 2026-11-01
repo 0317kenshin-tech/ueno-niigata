@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-31T06:07:50.922Z",
+  "updatedAt": "2026-11-01T06:38:02.435Z",
   "shops": [
     {
       "id": "jrsale",
@@ -8,7 +8,7 @@
       "delivery": "番号をメールで即納",
       "price": 3800,
       "checkedAt": "2026-10-31T06:07:47.381Z",
-      "stale": false
+      "stale": true
     },
     {
       "id": "access",
@@ -16,7 +16,7 @@
       "url": "https://www.access-ticket.com/products/detail/5432",
       "delivery": "郵送",
       "price": 3900,
-      "checkedAt": "2026-10-31T06:07:46.397Z",
+      "checkedAt": "2026-11-01T06:37:41.447Z",
       "stale": false
     },
     {
@@ -26,7 +26,7 @@
       "delivery": "郵送",
       "price": 3900,
       "checkedAt": "2026-10-31T06:07:50.922Z",
-      "stale": false
+      "stale": true
     },
     {
       "id": "kabuyu",
@@ -34,7 +34,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 4000,
-      "checkedAt": "2026-10-31T06:07:44.817Z",
+      "checkedAt": "2026-11-01T06:37:39.539Z",
       "stale": false
     }
   ]
