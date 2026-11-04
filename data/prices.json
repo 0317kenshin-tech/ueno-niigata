@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-03T07:07:29.621Z",
+  "updatedAt": "2026-11-04T06:52:52.457Z",
   "shops": [
     {
       "id": "jrsale",
@@ -8,7 +8,7 @@
       "delivery": "番号をメールで即納",
       "price": 3800,
       "checkedAt": "2026-11-03T07:07:28.891Z",
-      "stale": false
+      "stale": true
     },
     {
       "id": "access",
@@ -33,8 +33,8 @@
       "name": "株優エクスプレス",
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
-      "price": 4000,
-      "checkedAt": "2026-11-03T07:07:27.170Z",
+      "price": 4050,
+      "checkedAt": "2026-11-04T06:52:40.884Z",
       "stale": false
     }
   ]
