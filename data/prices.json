@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-06T07:11:21.969Z",
+  "updatedAt": "2026-11-07T06:24:05.435Z",
   "shops": [
     {
       "id": "jrsale",
@@ -34,7 +34,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 4100,
-      "checkedAt": "2026-11-06T07:11:07.577Z",
+      "checkedAt": "2026-11-07T06:23:53.524Z",
       "stale": false
     }
   ]
