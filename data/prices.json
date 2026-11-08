@@ -1,15 +1,6 @@
 {
-  "updatedAt": "2026-11-07T06:24:05.435Z",
+  "updatedAt": "2026-11-08T06:32:04.503Z",
   "shops": [
-    {
-      "id": "jrsale",
-      "name": "JR株主優待.com",
-      "url": "https://jr-sale.com/",
-      "delivery": "番号をメールで即納",
-      "price": 3800,
-      "checkedAt": "2026-11-03T07:07:28.891Z",
-      "stale": true
-    },
     {
       "id": "access",
       "name": "アクセスチケット",
@@ -29,12 +20,21 @@
       "stale": true
     },
     {
+      "id": "jrsale",
+      "name": "JR株主優待.com",
+      "url": "https://jr-sale.com/",
+      "delivery": "番号をメールで即納",
+      "price": 4000,
+      "checkedAt": "2026-11-08T06:32:03.501Z",
+      "stale": false
+    },
+    {
       "id": "kabuyu",
       "name": "株優エクスプレス",
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 4100,
-      "checkedAt": "2026-11-07T06:23:53.524Z",
+      "checkedAt": "2026-11-08T06:32:01.783Z",
       "stale": false
     }
   ]
