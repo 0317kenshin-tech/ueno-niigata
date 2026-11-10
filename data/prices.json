@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09T07:01:16.412Z",
+  "updatedAt": "2026-11-10T07:38:18.661Z",
   "shops": [
     {
       "id": "access",
@@ -26,7 +26,7 @@
       "delivery": "番号をメールで即納",
       "price": 4000,
       "checkedAt": "2026-11-09T07:01:15.278Z",
-      "stale": false
+      "stale": true
     },
     {
       "id": "kabuyu",
@@ -34,7 +34,7 @@
       "url": "https://www.life1.co.jp/code/jre-buy/",
       "delivery": "番号をメールで即納",
       "price": 4150,
-      "checkedAt": "2026-11-09T07:01:13.543Z",
+      "checkedAt": "2026-11-10T07:37:57.185Z",
       "stale": false
     }
   ]
